@@ -1,10 +1,5 @@
 # quickcode
 
-// 源文件夹路径
-const sourceFolder = 'E:/code/quickcode/packages/Swagger2Interface';
-// 目标文件路径
-const targetFile = 'E:/code/quickcode/combined-text.md';
-
 ## 简介
 
 自动生成代码工具
