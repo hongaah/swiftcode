@@ -1,45 +1,42 @@
 {
-    "name": "@quickcode/api",
-    "version": "1.0.5",
-    "description": "Automate the generation of the swagger api",
-    "main": "./dist/index.cjs.js",
-    "module": "./dist/index.esm.js",
-    "types": "./dist/types/index.d.ts",
-    "type": "module",
-    "exports": {
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js"
-    },
-    "files": [
-      "dist",
-      "package.json",
-      "README.md"
-    ],
-    "directories": {
-      "doc": "docs"
-    },
-    "engines": {
-      "node": ">=18.12.0"
-    },
-    "scripts": {
-      "clear:dist": "rimraf dist",
-      "build": "vite build",
-      "rollup:build": "pnpm clear:dist & rollup -c --filterLogs 'code:CIRCULAR_DEPENDENCY'",
-      "rollup:dev": "pnpm clear:dist & rollup -c -w --filterLogs 'code:CIRCULAR_DEPENDENCY'",
-      "release": "pnpm publish"
-    },
-    "publishConfig": {
-      "registry": "https://nexus.jlcops.com/repository/local-npm/"
-    },
-    "keywords": [
-      "swagger",
-      "automatic"
-    ],
-    "author": "Hazel Wei",
-    "license": "ISC",
-    "dependencies": {
-      "@quickcode/utils": "workspace:*",
-      "quicktype": "^23.0.78",
-      "quicktype-core": "^6.0.70"
-    }
+  "name": "@quickcode/api",
+  "version": "1.0.5",
+  "description": "Automate the generation of the swagger api",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "type": "module",
+  "exports": {
+    "import": "./dist/index.esm.js",
+    "require": "./dist/index.cjs.js"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "directories": {
+    "doc": "docs"
+  },
+  "engines": {
+    "node": ">=18.12.0"
+  },
+  "scripts": {
+    "clear:dist": "rimraf dist",
+    "build": "vite build",
+    "rollup:build": "pnpm clear:dist & rollup -c --filterLogs 'code:CIRCULAR_DEPENDENCY'",
+    "rollup:dev": "pnpm clear:dist & rollup -c -w --filterLogs 'code:CIRCULAR_DEPENDENCY'",
+    "release": "pnpm publish"
+  },
+  "keywords": [
+    "swagger",
+    "automatic"
+  ],
+  "author": "Hazel Wei",
+  "license": "ISC",
+  "dependencies": {
+    "@quickcode/utils": "workspace:*",
+    "quicktype": "^23.0.78",
+    "quicktype-core": "^6.0.70"
   }
+}

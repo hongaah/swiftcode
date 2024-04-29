@@ -16,9 +16,6 @@
     "rollup:dev": "pnpm clear:dist & rollup -c -w",
     "release": "pnpm publish"
   },
-  "publishConfig": {
-    "registry": "https://nexus.jlcops.com/repository/local-npm/"
-  },
   "keywords": [
     "automatic"
   ],

@@ -36,10 +36,10 @@ type CustomType = {
 export type TableObjType = Record<string, ColumsMaterialType | CustomType>
 
 function getColumnOperateRender(target: string[]) {
-  const btnList = target.map(item => {
-    return `h(JlcButton, {type: 'primary', onClick: () => {}}, { default: () => '${item}' })`
+  const btnList = target.map((item) => {
+    return `h(ElButton, {type: 'primary', onClick: () => {}}, { default: () => '${item}' })`
   })
-  return (`(h: (...args: any) => any, row: any) => {return h(JlcButtonGroup, {}, { default: () => [` +`${btnList}]})}`)
+  return `(h: (...args: any) => any, row: any) => {return h(ElButtonGroup, {}, { default: () => [` + `${btnList}]})}`
 }
 
 function transformTable(target: TableObjType) {
@@ -55,7 +55,7 @@ function transformTable(target: TableObjType) {
     // columsMaterial 未定义该类型
     if (typeof columsMaterial[itemType] === 'undefined') {
       Object.assign(resultItem, {
-        type: itemType,
+        type: itemType
       })
       Object.assign(resultItem, columsMaterial['text'])
     }
@@ -66,13 +66,13 @@ function transformTable(target: TableObjType) {
     // 根据类型设置值
     if (!['select'].includes(itemType)) {
       Object.assign(resultItem, {
-        label: label,
+        label: label
       })
     }
 
     if (!['select', 'index', 'operate'].includes(itemType)) {
       Object.assign(resultItem, {
-        prop: `prop${index + 1}`,
+        prop: `prop${index + 1}`
       })
     }
 
@@ -81,18 +81,18 @@ function transformTable(target: TableObjType) {
     if (typeof content === 'object') {
       if (content.fixed) {
         Object.assign(resultItem, {
-          fixed: content.fixed,
+          fixed: content.fixed
         })
       }
       if (content.formatDate) {
         Object.assign(resultItem, {
-          formatDate: content.formatDate,
+          formatDate: content.formatDate
         })
       }
       if (content.render) {
         if (Array.isArray(content.render) && content.render.length) {
           Object.assign(resultItem, {
-            render: getColumnOperateRender(content.render),
+            render: getColumnOperateRender(content.render)
           })
         }
       }
@@ -110,7 +110,7 @@ function getTableData(target: TableObjType) {
   const resultItem = {}
   Object.keys(target).forEach((item, index) => {
     Object.assign(resultItem, {
-      ['prop' + (index + 1)]: String(index + 1),
+      ['prop' + (index + 1)]: String(index + 1)
     })
   })
 

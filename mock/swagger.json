@@ -1,0 +1,2984 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "???WebAPI??",
+    "version": "1.0.0",
+    "title": "ERP Portal Web API",
+    "contact": {
+      "name": "???Java???"
+    }
+  },
+  "host": "",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "ImageCode",
+      "description": "erp获取图片验证码接口"
+    },
+    {
+      "name": "ProductCashWeb",
+      "description": "上传送货单回执相关接口"
+    },
+    {
+      "name": "UserDepartmentFeeInfoWebApi",
+      "description": "erp公司主体费用信息相关接口"
+    },
+    {
+      "name": "UserDepartmentInfoWebApi",
+      "description": "erp公司主体信息相关接口"
+    },
+    {
+      "name": "download",
+      "description": "文件下载相关接口"
+    },
+    {
+      "name": "login",
+      "description": "erp用户登录相关接口"
+    },
+    {
+      "name": "ssoLogin",
+      "description": "erp用户单点登录相关接口"
+    },
+    {
+      "name": "user",
+      "description": "用户管理相关接口"
+    }
+  ],
+  "paths": {
+    "/ImageCode": {
+      "get": {
+        "tags": ["ImageCode"],
+        "summary": "获取图片验证码",
+        "operationId": "getImageCode",
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SimpleResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/download/browserPlugin": {
+      "get": {
+        "tags": ["download"],
+        "summary": "下载浏览器插件接口",
+        "description": "下载浏览器插件接口",
+        "operationId": "downloadBrowserPlugin",
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SimpleResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/login/sso/getSettings": {
+      "post": {
+        "tags": ["ssoLogin"],
+        "summary": "获取所有设置",
+        "operationId": "getSettings",
+        "consumes": ["application/json"],
+        "produces": ["application/json;charset=UTF-8"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/统一平台相关配置"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/sso/logout": {
+      "post": {
+        "tags": ["ssoLogin"],
+        "summary": "用户注销",
+        "operationId": "logout",
+        "consumes": ["application/json"],
+        "produces": ["application/json;charset=UTF-8"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SimpleResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/sso/signin": {
+      "post": {
+        "tags": ["ssoLogin"],
+        "summary": "用户登录",
+        "operationId": "signin",
+        "consumes": ["application/json"],
+        "produces": ["application/json;charset=UTF-8"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SsoLoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/sso/signout": {
+      "post": {
+        "tags": ["ssoLogin"],
+        "summary": "统一注销登录",
+        "operationId": "signout",
+        "consumes": ["application/json"],
+        "produces": ["application/json;charset=UTF-8"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "signoutRequest",
+            "description": "统一注销登录请求",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SignoutRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SimpleResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/sso/syncAllUsers": {
+      "post": {
+        "tags": ["ssoLogin"],
+        "summary": "同步回写用户ssoUserId",
+        "description": "同步回写用户ssoUserId",
+        "operationId": "syncAllUsers",
+        "consumes": ["application/json"],
+        "produces": ["application/json;charset=UTF-8"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SimpleResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/sso/syncUserInfoAndDepartment": {
+      "post": {
+        "tags": ["ssoLogin"],
+        "summary": "同步用户信息和部门信息",
+        "description": "同步用户信息和部门信息",
+        "operationId": "syncUserInfoAndDepartment",
+        "consumes": ["application/json"],
+        "produces": ["application/json;charset=UTF-8"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SimpleResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/v1/getLoginUserInfo": {
+      "post": {
+        "tags": ["login"],
+        "summary": "获取当前登录用户信息，用于判断当前用户是否登录",
+        "operationId": "getLoginUserInfo",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/v1/getMacAddressIdentifiers": {
+      "get": {
+        "tags": ["login"],
+        "summary": "获取mac地址校验随即字符串",
+        "operationId": "getMacAddressIdentifiers",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/v1/getOldErpUrl": {
+      "get": {
+        "tags": ["login"],
+        "summary": "获取旧后台登录页路径",
+        "operationId": "getOldErpUrl",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/OldErpUrlResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/v1/initLoginParam": {
+      "get": {
+        "tags": ["login"],
+        "summary": "初始化登陆参数",
+        "operationId": "initLoginParam",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/v1/keepLive": {
+      "get": {
+        "tags": ["login"],
+        "summary": "心跳检查",
+        "operationId": "keepLive",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/v1/logout": {
+      "get": {
+        "tags": ["login"],
+        "summary": "注销",
+        "operationId": "logout",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SimpleResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/v1/sendLoginVerifyCode": {
+      "post": {
+        "tags": ["login"],
+        "summary": "发送登录验证码",
+        "operationId": "sendLoginVerifyCode",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SendLoginVerifyCodeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/LoginVerifyCodeResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/login/v1/userLogin": {
+      "post": {
+        "tags": ["login"],
+        "summary": "用户登录",
+        "operationId": "userLogin",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "loginRequest",
+            "description": "用户登录请求",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/productCash/selectProductCashCodeList": {
+      "post": {
+        "tags": ["ProductCashWeb"],
+        "summary": "模糊查询送货单列表",
+        "description": "模糊查询送货单列表",
+        "operationId": "selectProductCashCodeList",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "productCashCode",
+            "in": "query",
+            "description": "productCashCode",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MyResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/productCash/selectProductCashFileList": {
+      "post": {
+        "tags": ["ProductCashWeb"],
+        "summary": "根据送货单号查回执信息",
+        "description": "根据送货单号查回执信息",
+        "operationId": "selectProductCashList",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "productCashCode",
+            "in": "query",
+            "description": "productCashCode",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MyResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/productCash/updateUploadId": {
+      "post": {
+        "tags": ["ProductCashWeb"],
+        "summary": "同步修改文件外键",
+        "description": "同步修改文件外键",
+        "operationId": "updateUploadId",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "uploadVo",
+            "description": "uploadVo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UploadVo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MyResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/user/v1/addAndCancelCollection": {
+      "post": {
+        "tags": ["user"],
+        "summary": "添加取消菜单收藏",
+        "operationId": "addAndCancelCollection",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "collectionRequest",
+            "description": "collectionRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CollectionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MenuResponseVo"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/v1/getMenuTreeByCategory": {
+      "post": {
+        "tags": ["user"],
+        "summary": "获取当前登录用户的菜单(树形结构)",
+        "operationId": "getMenuTreeByCategory",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PubMenuVO"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/v1/getMyCollectionMenu": {
+      "get": {
+        "tags": ["user"],
+        "summary": "获取当前用户收藏的所有菜单",
+        "operationId": "getMyCollectionMenu",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PubMenuVO"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["user"],
+        "summary": "获取当前用户收藏的所有菜单",
+        "operationId": "getMyCollectionMenu",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PubMenuVO"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/user/v1/modifyUserAuthorityInfo": {
+      "post": {
+        "tags": ["user"],
+        "summary": "修改用户信息记录",
+        "operationId": "modifyUserAuthorityInfo",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userInfo",
+            "description": "userInfo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ModifyUserAuthorityInfoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SimpleResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/userDepartment/v1/loadDepartmentInfoByExcel": {
+      "post": {
+        "tags": ["UserDepartmentInfoWebApi"],
+        "summary": "通过excel导入公司信息",
+        "operationId": "loadDepartmentInfoByExcel",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "file",
+            "required": false,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserServerResultVo"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/userDepartment/v1/saveOrUpdateDepartmentInfo": {
+      "post": {
+        "tags": ["UserDepartmentInfoWebApi"],
+        "summary": "公司主体信息\t新增/修改",
+        "operationId": "saveOrUpdateUserDepartmentInfo",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "requestVo",
+            "description": "requestVo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserDepartmentInfoRequestVo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserServerResultVo"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/userDepartment/v1/selectUserDepartmentGroup": {
+      "post": {
+        "tags": ["UserDepartmentInfoWebApi"],
+        "summary": "获取部门所属公司主体下的所有分组列表 ",
+        "operationId": "selectUserDepartmentGroup",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "accessId",
+            "in": "query",
+            "description": "accessId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserServerResultVo«List«UserDepartmentInfoTreeResponseVo»»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/userDepartment/v1/selectUserDepartmentInfoByAccessId": {
+      "post": {
+        "tags": ["UserDepartmentInfoWebApi"],
+        "summary": "公司主体信息\t查询",
+        "operationId": "selectUserDepartmentInfoByAccessId",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "accessId",
+            "in": "query",
+            "description": "accessId",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserServerResultVo«UserDepartmentInfoResponseVo»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/userDepartment/v1/selectUserDepartmentInfoTreeList": {
+      "post": {
+        "tags": ["UserDepartmentInfoWebApi"],
+        "summary": "公司主体信息\t树形菜单",
+        "operationId": "selectUserDepartmentInfoTreeList",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserServerResultVo«List«UserDepartmentInfoTreeResponseVo»»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/userDepartment/v1/updateUserDepartmentInfoSortPosition": {
+      "post": {
+        "tags": ["UserDepartmentInfoWebApi"],
+        "summary": "公司主体信息\t菜单信息上移下移排序",
+        "operationId": "updateUserDepartmentInfoSortPosition",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userDepartmentAccessIdList",
+            "description": "userDepartmentAccessIdList",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserServerResultVo"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/userDepartmentFee/v1/saveOrUpdateUserDepartmentFeeInfo": {
+      "post": {
+        "tags": ["UserDepartmentFeeInfoWebApi"],
+        "summary": "公司主体费用信息\t新增/修改",
+        "operationId": "saveOrUpdateUserDepartmentFeeInfo",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "requestVo",
+            "description": "requestVo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserDepartmentFeeInfoRequestVo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserServerResultVo"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/userDepartmentFee/v1/selectUserDepartmentFeeInfoList": {
+      "post": {
+        "tags": ["UserDepartmentFeeInfoWebApi"],
+        "summary": "公司主体费用信息\t查询",
+        "operationId": "selectUserDepartmentFeeInfoList",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "requestVo",
+            "description": "requestVo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserDepartmentFeeQueryRequestVo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserServerResultVo«List«UserDepartmentFeeInfoResponseVo»»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    },
+    "/userDepartmentFee/v1/selectUserDepartmentFeePageInfo": {
+      "post": {
+        "tags": ["UserDepartmentFeeInfoWebApi"],
+        "summary": "公司主体费用信息\t分页查询",
+        "operationId": "selectUserDepartmentFeePageInfo",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "requestVo",
+            "description": "requestVo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserDepartmentFeeQueryRequestVo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserServerResultVo«UserDepartmentFeeInfoPageResponse»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "460": {
+            "description": "Invalid Session"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "AppDTO": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string",
+          "description": "应用ID",
+          "allowEmptyValue": false
+        },
+        "appName": {
+          "type": "string",
+          "description": "应用名称",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "AppDTO",
+      "description": "应用对象"
+    },
+    "CollectionRequest": {
+      "type": "object",
+      "properties": {
+        "isCollection": {
+          "type": "integer",
+          "format": "int32",
+          "description": "2：收藏，1：取消收藏",
+          "allowEmptyValue": false
+        },
+        "menuId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "菜单id",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "CollectionRequest",
+      "description": "用户收藏菜单请求实体"
+    },
+    "File": {
+      "type": "object",
+      "properties": {
+        "absolute": {
+          "type": "boolean"
+        },
+        "absoluteFile": {
+          "$ref": "#/definitions/File"
+        },
+        "absolutePath": {
+          "type": "string"
+        },
+        "canonicalFile": {
+          "$ref": "#/definitions/File"
+        },
+        "canonicalPath": {
+          "type": "string"
+        },
+        "directory": {
+          "type": "boolean"
+        },
+        "executable": {
+          "type": "boolean"
+        },
+        "file": {
+          "type": "boolean"
+        },
+        "freeSpace": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "lastModified": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parent": {
+          "type": "string"
+        },
+        "parentFile": {
+          "$ref": "#/definitions/File"
+        },
+        "path": {
+          "type": "string"
+        },
+        "readable": {
+          "type": "boolean"
+        },
+        "totalSpace": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "usableSpace": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "writable": {
+          "type": "boolean"
+        }
+      },
+      "title": "File"
+    },
+    "FileUploadVO": {
+      "type": "object",
+      "properties": {
+        "annexNumber": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "annexRealName": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "annexRemark": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "annexSize": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "annexSpeceLength": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "annexSpeceWidth": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "annexSuffix": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "annexType": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "annexUrl": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "annexdesc": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "batchCode": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "fileOssAccessId": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "luosuoannexRealName": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "luosuoannexUrl": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "moveRemark": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "moveStatus": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "remark": {
+          "type": "array",
+          "example": "null",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+        "remarks": {
+          "type": "array",
+          "example": "null",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+        "specsLength": {
+          "type": "array",
+          "example": "null",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+        "specsLengths": {
+          "type": "array",
+          "example": "null",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+        "specsWidth": {
+          "type": "array",
+          "example": "null",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+        "specsWidths": {
+          "type": "array",
+          "example": "null",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+        "storeShortPath": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "uploadFile": {
+          "type": "array",
+          "example": "null",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/File"
+          }
+        },
+        "uploadFileContentType": {
+          "type": "array",
+          "example": "null",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+        "uploadFileContentTypes": {
+          "type": "array",
+          "example": "null",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+        "uploadFileFileName": {
+          "type": "array",
+          "example": "null",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+        "uploadFileFileNames": {
+          "type": "array",
+          "example": "null",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+        "uploadFiles": {
+          "type": "array",
+          "example": "null",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/File"
+          }
+        },
+        "uploadId": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "uploadTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "uploadUserId": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "uploadUserName": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "FileUploadVO"
+    },
+    "LoginRequest": {
+      "type": "object",
+      "properties": {
+        "clearMacAddress": {
+          "type": "string",
+          "description": "明文mac地址",
+          "allowEmptyValue": false
+        },
+        "clientType": {
+          "type": "string",
+          "description": "登录客户端类型 pc/phone-aide/phone-shou/phone-smt/phone-unify",
+          "allowEmptyValue": false
+        },
+        "imgCode": {
+          "type": "string",
+          "description": "图片验证码",
+          "allowEmptyValue": true
+        },
+        "isPhoneLogin": {
+          "type": "string",
+          "description": "是否是手机验证码登录 yes/no",
+          "allowEmptyValue": true
+        },
+        "isRememberPwd": {
+          "type": "boolean",
+          "example": false,
+          "description": "是否记住密码",
+          "allowEmptyValue": false
+        },
+        "macAddress": {
+          "type": "string",
+          "description": "登录客户端mac地址",
+          "allowEmptyValue": true
+        },
+        "monitorStatus": {
+          "type": "string",
+          "description": "监控启动状态(0:可登录,-1:未安装截屏软件,1:截屏软件未运行)",
+          "allowEmptyValue": true
+        },
+        "password": {
+          "type": "string",
+          "description": "密码",
+          "allowEmptyValue": false
+        },
+        "phoneVerifyCode": {
+          "type": "string",
+          "description": "短信验证码",
+          "allowEmptyValue": true
+        },
+        "userAccount": {
+          "type": "string",
+          "description": "用户账号",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "LoginRequest",
+      "description": "用户登录请求实体"
+    },
+    "LoginResponse": {
+      "type": "object",
+      "required": ["result"],
+      "properties": {
+        "apps": {
+          "type": "array",
+          "description": "授权的应用",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/AppDTO"
+          }
+        },
+        "individualization": {
+          "type": "string",
+          "description": "是否个性化刷新",
+          "allowEmptyValue": false
+        },
+        "isProjectTestFlag": {
+          "type": "boolean",
+          "example": false,
+          "description": "是否测试环境",
+          "allowEmptyValue": false
+        },
+        "message": {
+          "type": "string",
+          "description": "错误消息",
+          "allowEmptyValue": false
+        },
+        "projectTestFlag": {
+          "type": "boolean"
+        },
+        "resourceCodeList": {
+          "type": "array",
+          "description": "用户拥有的资源Code列表",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+        "result": {
+          "type": "string",
+          "description": "响应结果，success - 成功，failed - 失败，请使用ApiResult的状态值。",
+          "allowEmptyValue": false
+        },
+        "userAccount": {
+          "type": "string",
+          "description": "用户账号",
+          "allowEmptyValue": false
+        },
+        "userName": {
+          "type": "string",
+          "description": "用户名称",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "LoginResponse",
+      "description": "登录返回给前台的结果"
+    },
+    "LoginVerifyCodeResponse": {
+      "type": "object",
+      "required": ["result"],
+      "properties": {
+        "limitTime": {
+          "type": "integer",
+          "format": "int32",
+          "description": "发送间隔倒计时时间，秒",
+          "allowEmptyValue": false
+        },
+        "message": {
+          "type": "string",
+          "description": "错误消息",
+          "allowEmptyValue": false
+        },
+        "messageResultCode": {
+          "type": "string",
+          "description": "结果提示码",
+          "allowEmptyValue": false
+        },
+        "result": {
+          "type": "string",
+          "description": "响应结果，success - 成功，failed - 失败，请使用ApiResult的状态值。",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "LoginVerifyCodeResponse",
+      "description": "用户登录验证码返回类"
+    },
+    "MenuResponseVo": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "null",
+          "description": "返回信息描述",
+          "allowEmptyValue": false
+        },
+        "success": {
+          "type": "string",
+          "example": "null",
+          "description": "成功标识",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "MenuResponseVo",
+      "description": "收藏夹菜单操作响应"
+    },
+    "ModifyUserAuthorityInfoRequest": {
+      "type": "object",
+      "properties": {
+        "iframeRefresh": {
+          "type": "string",
+          "description": "个性化刷新设置",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "ModifyUserAuthorityInfoRequest",
+      "description": "用户修改权限实体请求实体"
+    },
+    "MyResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "data": {
+          "type": "object",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "message": {
+          "type": "string",
+          "example": "null",
+          "allowEmptyValue": false
+        },
+        "success": {
+          "type": "boolean",
+          "example": false,
+          "allowEmptyValue": false
+        }
+      },
+      "title": "MyResponse"
+    },
+    "OldErpUrlResponse": {
+      "type": "object",
+      "required": ["result"],
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "错误消息",
+          "allowEmptyValue": false
+        },
+        "oldErpUrl": {
+          "type": "string",
+          "description": "旧后台路径",
+          "allowEmptyValue": false
+        },
+        "result": {
+          "type": "string",
+          "description": "响应结果，success - 成功，failed - 失败，请使用ApiResult的状态值。",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "OldErpUrlResponse",
+      "description": "获取旧后台路径响应"
+    },
+    "PubMenuVO": {
+      "type": "object",
+      "properties": {
+        "children": {
+          "type": "array",
+          "example": "null",
+          "description": "子菜单列表",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/PubMenuVO"
+          }
+        },
+        "description": {
+          "type": "string",
+          "example": "null",
+          "description": "菜单功能描述",
+          "allowEmptyValue": false
+        },
+        "groupId": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "资源组Id",
+          "allowEmptyValue": false
+        },
+        "isCollection": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "是否收藏 1:已收藏 2:取消收藏",
+          "allowEmptyValue": false
+        },
+        "menuId": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "菜单Id",
+          "allowEmptyValue": false
+        },
+        "menuName": {
+          "type": "string",
+          "example": "null",
+          "description": "菜单名",
+          "allowEmptyValue": false
+        },
+        "menuType": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "菜单类型 (0:目录 1:菜单)",
+          "allowEmptyValue": false
+        },
+        "parentId": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "父节点Id",
+          "allowEmptyValue": false
+        },
+        "parentName": {
+          "type": "string",
+          "example": "null",
+          "description": "父级菜单名",
+          "allowEmptyValue": false
+        },
+        "rescId": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "资源Id",
+          "allowEmptyValue": false
+        },
+        "sortNo": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "菜单排序号",
+          "allowEmptyValue": false
+        },
+        "url": {
+          "type": "string",
+          "example": "null",
+          "description": "菜单路径",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "PubMenuVO",
+      "description": "菜单项VO"
+    },
+    "SendLoginVerifyCodeRequest": {
+      "type": "object",
+      "properties": {
+        "imgCode": {
+          "type": "string",
+          "description": "图片验证码",
+          "allowEmptyValue": false
+        },
+        "password": {
+          "type": "string",
+          "description": "用户密码",
+          "allowEmptyValue": false
+        },
+        "userAccount": {
+          "type": "string",
+          "description": "用户账号",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "SendLoginVerifyCodeRequest",
+      "description": "发送登录验证码请求实体"
+    },
+    "SignoutRequest": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        }
+      },
+      "title": "SignoutRequest"
+    },
+    "SimpleResponse": {
+      "type": "object",
+      "required": ["result"],
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "null",
+          "description": "错误消息",
+          "allowEmptyValue": false
+        },
+        "result": {
+          "type": "string",
+          "example": "null",
+          "description": "响应结果，success - 成功，failed - 失败，请使用ApiResult的状态值。",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "SimpleResponse"
+    },
+    "SsoLoginRequest": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "授权码",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "SsoLoginRequest",
+      "description": "单点登录请求实体"
+    },
+    "TechnologicalProcessResponseVo": {
+      "type": "object",
+      "properties": {
+        "accessId": {
+          "type": "string",
+          "example": "null",
+          "description": "accessId",
+          "allowEmptyValue": false
+        },
+        "dictionaryBatchSortId": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "流程排序ID号(小批量)",
+          "allowEmptyValue": false
+        },
+        "dictionaryNeedtime": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "流程时间(分钟)",
+          "allowEmptyValue": false
+        },
+        "dictionaryRemark": {
+          "type": "string",
+          "example": "null",
+          "description": "流程描述",
+          "allowEmptyValue": false
+        },
+        "dictionarySortId": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "流程排序ID号(样板)",
+          "allowEmptyValue": false
+        },
+        "dictionaryUserId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "流程用户id",
+          "allowEmptyValue": false
+        },
+        "dictionaryUserName": {
+          "type": "string",
+          "example": "null",
+          "description": "流程用户",
+          "allowEmptyValue": false
+        },
+        "printProcessBatchStatus": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "是否为打印环节(小批量)",
+          "allowEmptyValue": false
+        },
+        "printProcessStatus": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "是否为打印环节(样板)",
+          "allowEmptyValue": false
+        },
+        "scanningUserIds": {
+          "type": "string",
+          "example": "null",
+          "description": "工艺扫描用户ids",
+          "allowEmptyValue": false
+        },
+        "scanningUserNames": {
+          "type": "string",
+          "example": "null",
+          "description": "工艺扫描用户名称集合",
+          "allowEmptyValue": false
+        },
+        "technicsProcessDictionaryId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "工艺流程序号",
+          "allowEmptyValue": false
+        },
+        "technicsProcessDictionaryName": {
+          "type": "string",
+          "example": "null",
+          "description": "流程名称",
+          "allowEmptyValue": false
+        },
+        "testProcessStatus": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "是否为测试环节，1为测试，2为AOI",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "TechnologicalProcessResponseVo"
+    },
+    "UploadVo": {
+      "type": "object",
+      "properties": {
+        "sendProductCode": {
+          "type": "string",
+          "example": "null",
+          "description": "送货单号",
+          "allowEmptyValue": false
+        },
+        "uploadVoList": {
+          "type": "array",
+          "example": "null",
+          "description": "加密送货单列表",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/FileUploadVO"
+          }
+        }
+      },
+      "title": "UploadVo",
+      "description": "修改文件Vo"
+    },
+    "UserDepartmentFeeInfoPageResponse": {
+      "type": "object",
+      "required": ["result"],
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "null",
+          "description": "错误消息",
+          "allowEmptyValue": false
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "当前页码",
+          "allowEmptyValue": false
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "每页行数",
+          "allowEmptyValue": false
+        },
+        "result": {
+          "type": "string",
+          "example": "null",
+          "description": "响应结果，success - 成功，failed - 失败，请使用ApiResult的状态值。",
+          "allowEmptyValue": false
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "总页数",
+          "allowEmptyValue": false
+        },
+        "totalRows": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "总记录数",
+          "allowEmptyValue": false
+        },
+        "userDepartmentFeeInfoResponseList": {
+          "type": "array",
+          "example": "null",
+          "description": "用户信息列表",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/UserDepartmentFeeInfoResponseVo"
+          }
+        }
+      },
+      "title": "UserDepartmentFeeInfoPageResponse",
+      "description": "分页查询用户信息结果"
+    },
+    "UserDepartmentFeeInfoRequestVo": {
+      "type": "object",
+      "required": ["operateType"],
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "null",
+          "description": "创建时间",
+          "allowEmptyValue": false
+        },
+        "createUserId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "创建人ID",
+          "allowEmptyValue": false
+        },
+        "createUserName": {
+          "type": "string",
+          "example": "null",
+          "description": "创建人",
+          "allowEmptyValue": false
+        },
+        "deleteFlag": {
+          "type": "boolean",
+          "example": false,
+          "description": "是否禁用",
+          "allowEmptyValue": false
+        },
+        "departmentFeeCode": {
+          "type": "string",
+          "example": "null",
+          "description": "部门费用编码",
+          "allowEmptyValue": false
+        },
+        "departmentFeeName": {
+          "type": "string",
+          "example": "null",
+          "description": "部门费用名称",
+          "allowEmptyValue": false
+        },
+        "operateType": {
+          "type": "string",
+          "example": "null",
+          "description": "操作类型 insert:新增 update:修改 禁用：delete",
+          "allowEmptyValue": false
+        },
+        "remark": {
+          "type": "string",
+          "example": "null",
+          "description": "备注",
+          "allowEmptyValue": false
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "null",
+          "description": "修改时间",
+          "allowEmptyValue": false
+        },
+        "updateUserId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "修改人ID",
+          "allowEmptyValue": false
+        },
+        "updateUserName": {
+          "type": "string",
+          "example": "null",
+          "description": "修改人",
+          "allowEmptyValue": false
+        },
+        "userDepartmentFeeAccessId": {
+          "type": "string",
+          "example": "null",
+          "description": "业务id",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "UserDepartmentFeeInfoRequestVo",
+      "description": "用户部门费用信息请求相关参数"
+    },
+    "UserDepartmentFeeInfoResponseVo": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "null",
+          "description": "创建时间",
+          "allowEmptyValue": false
+        },
+        "createUserId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "创建人ID",
+          "allowEmptyValue": false
+        },
+        "createUserName": {
+          "type": "string",
+          "example": "null",
+          "description": "创建人",
+          "allowEmptyValue": false
+        },
+        "deleteFlag": {
+          "type": "boolean",
+          "example": false,
+          "description": "是否禁用",
+          "allowEmptyValue": false
+        },
+        "departmentFeeCode": {
+          "type": "string",
+          "example": "null",
+          "description": "部门费用编码",
+          "allowEmptyValue": false
+        },
+        "departmentFeeName": {
+          "type": "string",
+          "example": "null",
+          "description": "部门费用名称",
+          "allowEmptyValue": false
+        },
+        "remark": {
+          "type": "string",
+          "example": "null",
+          "description": "备注",
+          "allowEmptyValue": false
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "null",
+          "description": "修改时间",
+          "allowEmptyValue": false
+        },
+        "updateUserId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "修改人ID",
+          "allowEmptyValue": false
+        },
+        "updateUserName": {
+          "type": "string",
+          "example": "null",
+          "description": "修改人",
+          "allowEmptyValue": false
+        },
+        "userDepartmentFeeAccessId": {
+          "type": "string",
+          "example": "null",
+          "description": "业务id",
+          "allowEmptyValue": false
+        },
+        "userDepartmentFeeKeyId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "主键id",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "UserDepartmentFeeInfoResponseVo",
+      "description": "用户部门费用信息响应相关参数"
+    },
+    "UserDepartmentFeeQueryRequestVo": {
+      "type": "object",
+      "properties": {
+        "deleteFlag": {
+          "type": "boolean",
+          "example": false,
+          "description": "是否禁用",
+          "allowEmptyValue": false
+        },
+        "departmentFeeCode": {
+          "type": "string",
+          "example": "null",
+          "description": "部门费用编码",
+          "allowEmptyValue": false
+        },
+        "departmentFeeName": {
+          "type": "string",
+          "example": "null",
+          "description": "部门费用名称",
+          "allowEmptyValue": false
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "当前页码",
+          "allowEmptyValue": false
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "每页行数",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "UserDepartmentFeeQueryRequestVo",
+      "description": "用户部门费用信息请求相关参数"
+    },
+    "UserDepartmentInfoRequestVo": {
+      "type": "object",
+      "required": ["operateType"],
+      "properties": {
+        "area": {
+          "type": "string",
+          "example": "null",
+          "description": "地区",
+          "allowEmptyValue": false
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "null",
+          "description": "创建时间",
+          "allowEmptyValue": false
+        },
+        "createUserId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "创建人ID",
+          "allowEmptyValue": false
+        },
+        "createUserName": {
+          "type": "string",
+          "example": "null",
+          "description": "创建人",
+          "allowEmptyValue": false
+        },
+        "departmentCode": {
+          "type": "string",
+          "example": "null",
+          "description": "部门编码",
+          "allowEmptyValue": false
+        },
+        "departmentFeeCode": {
+          "type": "string",
+          "example": "null",
+          "description": "部门费用编码",
+          "allowEmptyValue": false
+        },
+        "departmentFeeId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "部门费用id",
+          "allowEmptyValue": false
+        },
+        "departmentLevel": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "部门层级",
+          "allowEmptyValue": false
+        },
+        "departmentLinkPhone": {
+          "type": "string",
+          "example": "null",
+          "description": "联系电话",
+          "allowEmptyValue": false
+        },
+        "departmentManager": {
+          "type": "string",
+          "example": "null",
+          "description": "部门管理人",
+          "allowEmptyValue": false
+        },
+        "departmentName": {
+          "type": "string",
+          "example": "null",
+          "description": "部门编码名称",
+          "allowEmptyValue": false
+        },
+        "departmentParentAccessId": {
+          "type": "string",
+          "example": "null",
+          "description": "父级部门业务id",
+          "allowEmptyValue": false
+        },
+        "departmentPeopleCount": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "部门人数",
+          "allowEmptyValue": false
+        },
+        "departmentTechnology": {
+          "type": "string",
+          "example": "null",
+          "description": "部门工艺 （多种工艺 , 分隔）",
+          "allowEmptyValue": false
+        },
+        "groupAccessId": {
+          "type": "string",
+          "example": "null",
+          "description": "部门组id",
+          "allowEmptyValue": false
+        },
+        "mustElectricFlag": {
+          "type": "boolean",
+          "example": false,
+          "description": "是否必须设置电费",
+          "allowEmptyValue": false
+        },
+        "mustWaterFlag": {
+          "type": "boolean",
+          "example": false,
+          "description": "是否必须设置水费",
+          "allowEmptyValue": false
+        },
+        "operateType": {
+          "type": "string",
+          "example": "null",
+          "description": "操作类型 insert:新增 update:修改 禁用：delete",
+          "allowEmptyValue": false
+        },
+        "remark": {
+          "type": "string",
+          "example": "null",
+          "description": "备注",
+          "allowEmptyValue": false
+        },
+        "sortPosition": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "部门排序",
+          "allowEmptyValue": false
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "null",
+          "description": "修改时间",
+          "allowEmptyValue": false
+        },
+        "updateUserId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "修改人ID",
+          "allowEmptyValue": false
+        },
+        "updateUserName": {
+          "type": "string",
+          "example": "null",
+          "description": "修改人",
+          "allowEmptyValue": false
+        },
+        "userDepartmentAccessId": {
+          "type": "string",
+          "example": "null",
+          "description": "业务id",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "UserDepartmentInfoRequestVo",
+      "description": "用户部门信息请求相关参数"
+    },
+    "UserDepartmentInfoResponseVo": {
+      "type": "object",
+      "properties": {
+        "area": {
+          "type": "string",
+          "example": "null",
+          "description": "地区",
+          "allowEmptyValue": false
+        },
+        "childList": {
+          "type": "array",
+          "example": "null",
+          "description": "下级",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/UserDepartmentInfoResponseVo"
+          }
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "null",
+          "description": "创建时间",
+          "allowEmptyValue": false
+        },
+        "createUserId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "创建人ID",
+          "allowEmptyValue": false
+        },
+        "createUserName": {
+          "type": "string",
+          "example": "null",
+          "description": "创建人",
+          "allowEmptyValue": false
+        },
+        "departmentCode": {
+          "type": "string",
+          "example": "null",
+          "description": "部门编码",
+          "allowEmptyValue": false
+        },
+        "departmentFeeCode": {
+          "type": "string",
+          "example": "null",
+          "description": "部门费用编码",
+          "allowEmptyValue": false
+        },
+        "departmentFeeDeleteFlag": {
+          "type": "boolean",
+          "example": false,
+          "description": "费用归属是否禁用",
+          "allowEmptyValue": false
+        },
+        "departmentFeeId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "部门费用id",
+          "allowEmptyValue": false
+        },
+        "departmentFeeName": {
+          "type": "string",
+          "example": "null",
+          "description": "部门费用名称",
+          "allowEmptyValue": false
+        },
+        "departmentLevel": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "部门层级",
+          "allowEmptyValue": false
+        },
+        "departmentLinkPhone": {
+          "type": "string",
+          "example": "null",
+          "description": "联系电话",
+          "allowEmptyValue": false
+        },
+        "departmentLinkPhoneEncry": {
+          "type": "string",
+          "example": "null",
+          "description": "联系电话加密",
+          "allowEmptyValue": false
+        },
+        "departmentManager": {
+          "type": "string",
+          "example": "null",
+          "description": "部门管理人",
+          "allowEmptyValue": false
+        },
+        "departmentName": {
+          "type": "string",
+          "example": "null",
+          "description": "部门编码名称",
+          "allowEmptyValue": false
+        },
+        "departmentParentId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "父级部门",
+          "allowEmptyValue": false
+        },
+        "departmentPeopleCount": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "部门人数",
+          "allowEmptyValue": false
+        },
+        "departmentTechnology": {
+          "type": "string",
+          "example": "null",
+          "description": "部门工艺 （多种工艺 , 分隔）",
+          "allowEmptyValue": false
+        },
+        "groupAccessId": {
+          "type": "string",
+          "example": "null",
+          "description": "组id",
+          "allowEmptyValue": false
+        },
+        "mustElectricFlag": {
+          "type": "boolean",
+          "example": false,
+          "description": "是否必须设置电费",
+          "allowEmptyValue": false
+        },
+        "mustWaterFlag": {
+          "type": "boolean",
+          "example": false,
+          "description": "是否必须设置水费",
+          "allowEmptyValue": false
+        },
+        "remark": {
+          "type": "string",
+          "example": "null",
+          "description": "备注",
+          "allowEmptyValue": false
+        },
+        "sortPosition": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "排序规则",
+          "allowEmptyValue": false
+        },
+        "technologicalProcessResponse": {
+          "type": "array",
+          "example": "null",
+          "description": "工艺流程",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/TechnologicalProcessResponseVo"
+          }
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "example": "null",
+          "description": "修改时间",
+          "allowEmptyValue": false
+        },
+        "updateUserId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "修改人ID",
+          "allowEmptyValue": false
+        },
+        "updateUserName": {
+          "type": "string",
+          "example": "null",
+          "description": "修改人",
+          "allowEmptyValue": false
+        },
+        "userDepartmentAccessId": {
+          "type": "string",
+          "example": "null",
+          "description": "业务id",
+          "allowEmptyValue": false
+        },
+        "userDepartmentKeyId": {
+          "type": "integer",
+          "format": "int64",
+          "example": "null",
+          "description": "主键id",
+          "allowEmptyValue": false
+        },
+        "userDepartmentParentAccessId": {
+          "type": "string",
+          "example": "null",
+          "description": "父级部门业务id",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "UserDepartmentInfoResponseVo",
+      "description": "用户部门信息响应相关参数"
+    },
+    "UserDepartmentInfoTreeResponseVo": {
+      "type": "object",
+      "properties": {
+        "area": {
+          "type": "string",
+          "example": "null",
+          "description": "地区名称",
+          "allowEmptyValue": false
+        },
+        "childDepartmentInfoList": {
+          "type": "array",
+          "example": "null",
+          "description": "下级",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/UserDepartmentInfoTreeResponseVo"
+          }
+        },
+        "departmentCode": {
+          "type": "string",
+          "example": "null",
+          "description": "部门编码",
+          "allowEmptyValue": false
+        },
+        "departmentFeeCode": {
+          "type": "string",
+          "example": "null",
+          "description": "部门费用编码",
+          "allowEmptyValue": false
+        },
+        "departmentFullNames": {
+          "type": "string",
+          "example": "null",
+          "description": "部门全称",
+          "allowEmptyValue": false
+        },
+        "departmentLevel": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "部门层级",
+          "allowEmptyValue": false
+        },
+        "departmentName": {
+          "type": "string",
+          "example": "null",
+          "description": "部门编码名称",
+          "allowEmptyValue": false
+        },
+        "mustElectricFlag": {
+          "type": "boolean",
+          "example": false,
+          "description": "是否必须设置电费",
+          "allowEmptyValue": false
+        },
+        "mustWaterFlag": {
+          "type": "boolean",
+          "example": false,
+          "description": "是否必须设置水费",
+          "allowEmptyValue": false
+        },
+        "sortPosition": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "排序规则",
+          "allowEmptyValue": false
+        },
+        "userDepartmentAccessId": {
+          "type": "string",
+          "example": "null",
+          "description": "业务id",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "UserDepartmentInfoTreeResponseVo",
+      "description": "用户部门信息树形菜单响应相关参数"
+    },
+    "UserServerResultVo": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "返回码",
+          "allowEmptyValue": false
+        },
+        "data": {
+          "type": "object",
+          "example": "null",
+          "description": "返回数据",
+          "allowEmptyValue": false
+        },
+        "msg": {
+          "type": "string",
+          "example": "null",
+          "description": "返回消息:一般失败时会返回失败理由",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "UserServerResultVo",
+      "description": "服务端公共响应结果"
+    },
+    "UserServerResultVo«List«UserDepartmentFeeInfoResponseVo»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "返回码",
+          "allowEmptyValue": false
+        },
+        "data": {
+          "type": "array",
+          "example": "null",
+          "description": "返回数据",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/UserDepartmentFeeInfoResponseVo"
+          }
+        },
+        "msg": {
+          "type": "string",
+          "example": "null",
+          "description": "返回消息:一般失败时会返回失败理由",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "UserServerResultVo«List«UserDepartmentFeeInfoResponseVo»»",
+      "description": "服务端公共响应结果"
+    },
+    "UserServerResultVo«List«UserDepartmentInfoTreeResponseVo»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "返回码",
+          "allowEmptyValue": false
+        },
+        "data": {
+          "type": "array",
+          "example": "null",
+          "description": "返回数据",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/UserDepartmentInfoTreeResponseVo"
+          }
+        },
+        "msg": {
+          "type": "string",
+          "example": "null",
+          "description": "返回消息:一般失败时会返回失败理由",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "UserServerResultVo«List«UserDepartmentInfoTreeResponseVo»»",
+      "description": "服务端公共响应结果"
+    },
+    "UserServerResultVo«UserDepartmentFeeInfoPageResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "返回码",
+          "allowEmptyValue": false
+        },
+        "data": {
+          "example": "null",
+          "description": "返回数据",
+          "allowEmptyValue": false,
+          "$ref": "#/definitions/UserDepartmentFeeInfoPageResponse"
+        },
+        "msg": {
+          "type": "string",
+          "example": "null",
+          "description": "返回消息:一般失败时会返回失败理由",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "UserServerResultVo«UserDepartmentFeeInfoPageResponse»",
+      "description": "服务端公共响应结果"
+    },
+    "UserServerResultVo«UserDepartmentInfoResponseVo»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "example": "null",
+          "description": "返回码",
+          "allowEmptyValue": false
+        },
+        "data": {
+          "example": "null",
+          "description": "返回数据",
+          "allowEmptyValue": false,
+          "$ref": "#/definitions/UserDepartmentInfoResponseVo"
+        },
+        "msg": {
+          "type": "string",
+          "example": "null",
+          "description": "返回消息:一般失败时会返回失败理由",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "UserServerResultVo«UserDepartmentInfoResponseVo»",
+      "description": "服务端公共响应结果"
+    },
+    "统一平台相关配置": {
+      "type": "object",
+      "required": ["result"],
+      "properties": {
+        "appId": {
+          "type": "string",
+          "description": "应用ID",
+          "allowEmptyValue": false
+        },
+        "message": {
+          "type": "string",
+          "description": "错误消息",
+          "allowEmptyValue": false
+        },
+        "result": {
+          "type": "string",
+          "description": "响应结果，success - 成功，failed - 失败，请使用ApiResult的状态值。",
+          "allowEmptyValue": false
+        },
+        "ssoLoginServerURL": {
+          "type": "string",
+          "description": "统一登录系统入口",
+          "allowEmptyValue": false
+        },
+        "ssoServerURL": {
+          "type": "string",
+          "description": "统一登录系统网址",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "统一平台相关配置"
+    }
+  }
+}

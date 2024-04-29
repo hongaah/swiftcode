@@ -48,8 +48,8 @@ $ quickcode gen-api <swagger-api-address> -d -r <rename-dist>
 #### 前置环境
 
 - vue3
-- @jlc/vue3
-- 配置 JlcConfigProvider 文件
+- element-plus
+- 配置 ElConfigProvider 文件
 
 #### 功能命令
 

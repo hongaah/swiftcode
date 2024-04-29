@@ -30,11 +30,11 @@ export function nodeRequest(options: RequestOptions) {
 
   return new Promise((resolve, reject) => {
     const req = httpServer(params, (res) => {
-    res.setEncoding('utf8')
+      res.setEncoding('utf8')
 
-    let data = ''
+      let data = ''
 
-    res.on('data', (chunk) => (data += chunk))
+      res.on('data', (chunk) => (data += chunk))
       res.on('end', () => {
         if (res.statusCode === 200) {
           resolve(isJson(data) ? JSON.parse(data) : data)
@@ -70,6 +70,6 @@ export default async function request(options: RequestOptions) {
 }
 
 // const result = await request({
-//   url: 'https://dev-zxh-mh.jlcerp.com/api/erp/api.json?group=webapi'
+//   url: ''
 // })
 // console.log(result)

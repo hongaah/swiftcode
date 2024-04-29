@@ -35,9 +35,6 @@
   ],
   "author": "Hazel Wei",
   "license": "ISC",
-  "publishConfig": {
-    "registry": "https://nexus.jlcops.com/repository/local-npm/"
-  },
   "prettier": {
     "tabWidth": 2,
     "printWidth": 120,
