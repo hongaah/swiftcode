@@ -1,0 +1,10 @@
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "code-producer",
+      "program": "${workspaceFolder}/src/pages/Swagger2Interface/index.js"
+    }
+  ]
+}

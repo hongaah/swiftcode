@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "baseUrl": ".",
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "allowJs": false,
+    "strict": true,
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "rootDir": "./",
+    "outDir": "./dist"
+  },
+  "include": ["packages"],
+  "exclude": ["node_modules"]
+}

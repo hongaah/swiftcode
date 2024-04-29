@@ -1,0 +1,76 @@
+{
+  "name": "quickcode",
+  "version": "1.0.18",
+  "description": "Automate the generation of the swagger api and vue template",
+  "type": "module",
+  "bin": {
+    "quickcode": "bin/index.js"
+  },
+  "main": "index.js",
+  "files": [
+    "bin",
+    "package.json",
+    "README.md",
+    "template.js",
+    "index.mjs"
+  ],
+  "engines": {
+    "node": ">=18.12.0"
+  },
+  "scripts": {
+    "clear:dist": "rimraf dist",
+    "esbuild:Swagger2Interface": "npx esbuild ./packages/Swagger2Interface/index.js --bundle --minify --outfile=dist/index.js --platform=node",
+    "rollup:utils": "pnpm --filter=@quickcode/utils rollup:build",
+    "rollup:api": "pnpm --filter=@quickcode/api rollup:build",
+    "rollup:list": "pnpm --filter=@quickcode/list rollup:build",
+    "rollup": "pnpm rollup:utils & pnpm rollup:api & pnpm rollup:list",
+    "build": "pnpm clear:dist & rollup -c",
+    "release": "pnpm publish"
+  },
+  "keywords": [
+    "swagger",
+    "vue",
+    "template",
+    "automatic"
+  ],
+  "author": "Hazel Wei",
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://nexus.jlcops.com/repository/local-npm/"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "printWidth": 120,
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "none",
+    "jsxBracketSameLine": false,
+    "endOfLine": "auto",
+    "htmlWhitespaceSensitivity": "ignore",
+    "vueIndentScriptAndStyle": true
+  },
+  "dependencies": {
+    "@quickcode/api": "workspace:*",
+    "@quickcode/list": "workspace:*",
+    "@quickcode/utils": "workspace:*",
+    "chalk": "4.1.2",
+    "commander": "11.1.0",
+    "inquirer": "7.1.0",
+    "ora": "^4.0.4"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^20.11.30",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.13.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "typescript": "^5.4.3",
+    "vite": "4.4.11",
+    "vite-plugin-commonjs": "0.10.1"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@quickcode/utils",
+  "version": "1.0.2",
+  "description": "quickcode utils",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "type": "module",
+  "exports": {
+    "import": "./dist/index.esm.js",
+    "require": "./dist/index.cjs.js"
+  },
+  "scripts": {
+    "clear:dist": "rimraf dist",
+    "rollup:build": "pnpm clear:dist & rollup -c",
+    "rollup:dev": "pnpm clear:dist & rollup -c -w",
+    "release": "pnpm publish"
+  },
+  "publishConfig": {
+    "registry": "https://nexus.jlcops.com/repository/local-npm/"
+  },
+  "keywords": [
+    "automatic"
+  ],
+  "author": "Hazel Wei",
+  "license": "ISC",
+  "dependencies": {
+    "prettier": "^3.2.5"
+  }
+}
