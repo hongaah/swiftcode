@@ -1,4 +1,4 @@
-import { formatDocName, readFile } from '@quickcode/utils'
+import { formatDocName, readFile } from '@swiftcode/utils'
 
 export type InputType = {
   type: 'json'

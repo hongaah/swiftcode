@@ -1,4 +1,4 @@
-# quickcode
+# swiftcode
 
 ## 简介
 
@@ -12,10 +12,10 @@
 ```bash
 
 # 安装
-$ npm install -g quickcode
+$ npm install -g swiftcode
 
 # 使用：在一个文件夹中打开终端，执行以下命令
-$ quickcode
+$ swiftcode
 
 # 帮助手册
 $ qucickcode -h
@@ -26,20 +26,20 @@ $ qucickcode -h
 ```bash
 
 # 使用：在一个文件夹中打开终端，执行以下命令
-$ quickcode
+$ swiftcode
 
 # SwaggerAPI：通过命令转换 swagger 地址
 # SwaggerAPI：swagger 链接查找方式：打开swagger 页面，控制台网络找到api.json接口
-$ quickcode gen-api <swagger-api-address>
+$ swiftcode gen-api <swagger-api-address>
 
 # 通过命令转换 swagger json 文档
-$ quickcode gen-api <swagger-json-address> -f
+$ swiftcode gen-api <swagger-json-address> -f
 
 # 通过命令生成调试产物
-$ quickcode gen-api <swagger-api-address> -d
+$ swiftcode gen-api <swagger-api-address> -d
 
 # 重命名存放产物的文件夹
-$ quickcode gen-api <swagger-api-address> -d -r <rename-dist>
+$ swiftcode gen-api <swagger-api-address> -d -r <rename-dist>
 
 ```
 
@@ -56,13 +56,13 @@ $ quickcode gen-api <swagger-api-address> -d -r <rename-dist>
 ```bash
 
 # 使用：在一个文件夹中打开终端，执行以下命令
-$ quickcode
+$ swiftcode
 
 # 转换列表页面，默认为 template.js
-$ quickcode gen-list [template-address]
+$ swiftcode gen-list [template-address]
 
 # 下载转换列表的模板
-$ quickcode gen-list-template
+$ swiftcode gen-list-template
 
 ```
 

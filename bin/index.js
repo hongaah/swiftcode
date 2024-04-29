@@ -3,8 +3,8 @@ import inquirer from 'inquirer'
 import { Command } from 'commander/esm.mjs'
 import ora from 'ora'
 import chalk from 'chalk'
-import { Swagger2InterfaceOutput } from '@quickcode/api'
-import { Template2ListOutput } from '@quickcode/list'
+import { Swagger2InterfaceOutput } from '@swiftcode/api'
+import { Template2ListOutput } from '@swiftcode/list'
 import { createTemplate, getPackageVersion } from '../index.mjs'
 
 const program = new Command()

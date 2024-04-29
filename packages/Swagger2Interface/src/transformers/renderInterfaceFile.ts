@@ -1,5 +1,5 @@
 import { getInterfacePage, api2structure, convertJsonToTsType } from './index'
-import { generateFolder, generateFile } from '@quickcode/utils'
+import { generateFolder, generateFile } from '@swiftcode/utils'
 import { type SwaggerStuctType, type DefinitionsValueType } from '../index'
 
 export type renderInterfaceOptions = {
@@ -16,23 +16,27 @@ async function renderInterfaceFile(source: renderInterfaceOptions) {
   const { target, definitions, dir = 'dist', isDev, beforeTransformTs } = source ?? {}
   const wholeStructureContent = await api2structure(target, definitions)
 
-  generateFolder('temp', () => {
-    generateFile(
-      'temp/whole-structure-content.json',
-      JSON.stringify(wholeStructureContent, undefined, 2),
-      isDev
-    )
-  }, isDev)
+  generateFolder(
+    'temp',
+    () => {
+      generateFile('temp/whole-structure-content.json', JSON.stringify(wholeStructureContent, undefined, 2), isDev)
+    },
+    isDev
+  )
 
   for (let [fileName, fileContent] of Object.entries(wholeStructureContent)) {
     const { content, definitions } = getInterfacePage(fileContent, beforeTransformTs)
     const typesContent = await convertJsonToTsType(definitions)
     // const typesContentOrigin = definitions
     generateFolder(`${dir}`)
-    generateFolder(`${dir}/${fileName}`, () => {
-      generateFile(`${dir}/${fileName}/index.ts`, content)
-      generateFile(`${dir}/${fileName}/types.ts`, typesContent)
-    }, isDev)
+    generateFolder(
+      `${dir}/${fileName}`,
+      () => {
+        generateFile(`${dir}/${fileName}/index.ts`, content)
+        generateFile(`${dir}/${fileName}/types.ts`, typesContent)
+      },
+      isDev
+    )
     // generateFile(`${dir}/${fileName}/definitions.ts`, typesContentOrigin)
   }
 }

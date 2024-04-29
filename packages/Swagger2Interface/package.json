@@ -1,5 +1,5 @@
 {
-  "name": "@quickcode/api",
+  "name": "@swiftcode/api",
   "version": "1.0.5",
   "description": "Automate the generation of the swagger api",
   "main": "./dist/index.cjs.js",
@@ -35,7 +35,7 @@
   "author": "Hazel Wei",
   "license": "ISC",
   "dependencies": {
-    "@quickcode/utils": "workspace:*",
+    "@swiftcode/utils": "workspace:*",
     "quicktype": "^23.0.78",
     "quicktype-core": "^6.0.70"
   }

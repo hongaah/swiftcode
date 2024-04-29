@@ -1,4 +1,4 @@
-import { formatDocName, isJson, readFile, request } from '@quickcode/utils'
+import { formatDocName, isJson, readFile, request } from '@swiftcode/utils'
 import { type OptionsType, type SwaggerStuctType } from '../index'
 
 /**
@@ -19,15 +19,15 @@ async function getInput(target: Pick<OptionsType, 'type' | 'source'>) {
       throw Error('请传入文件路径')
     }
 
-  const sourceContent = readFile(`${formatDocName(source)}`)
+    const sourceContent = readFile(`${formatDocName(source)}`)
 
-  if (!isJson(sourceContent)) throw Error('文件内容不是 JSON 格式！')
+    if (!isJson(sourceContent)) throw Error('文件内容不是 JSON 格式！')
     const { tags, paths, definitions } = JSON.parse(sourceContent) ?? {}
     if (!tags || !paths || !definitions) {
       throw Error(`文档格式不支持，请传入 swagger json 文档`)
     }
 
-  result = JSON.parse(sourceContent)
+    result = JSON.parse(sourceContent)
   }
 
   if (type === 'url') {

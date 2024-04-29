@@ -1,4 +1,4 @@
-import { generateFile } from '@quickcode/utils'
+import { generateFile } from '@swiftcode/utils'
 import { filters, properties, filename } from './target.js'
 
 const propertiesWithDesc = []
@@ -6,8 +6,7 @@ const propertiesWithDesc = []
 function formatProperties(properties) {
   const result = {}
   for (let [key, value] of Object.entries(properties)) {
-    const reg =
-      /[`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘'，。、\s]/im
+    const reg = /[`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘'，。、\s]/im
     let typeName = value.description
     if (reg.test(typeName)) {
       propertiesWithDesc.push(typeName)
@@ -33,20 +32,20 @@ function matchingFieldFormat(filterList, types) {
     }
   }
 
-return {
+  return {
     properties,
     filterList,
-    error,
+    error
   }
 }
 
 function matchingField(filters, properties) {
   const { error, filterList, properties: type } = matchingFieldFormat(filters, properties)
 
-const content = `const properties = ${JSON.stringify(type)} \nconst filterList = ${JSON.stringify(
+  const content = `const properties = ${JSON.stringify(type)} \nconst filterList = ${JSON.stringify(
     filterList
   )}\n\n\nconst error = '${[...new Set(error)].join(', ')}'\n\nconst propertiesDesc = '${[
-    ...new Set(propertiesWithDesc),
+    ...new Set(propertiesWithDesc)
   ].join('\n')}'\n`
   generateFile(`dist/${filename}.js`, content)
 }

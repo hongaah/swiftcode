@@ -1,5 +1,5 @@
 import { convertJsonToTsType, apiAddDefinitions, apiGetDefinitions } from './index'
-import { json2moduleContent, generateFolder, generateFile, formatPage } from '@quickcode/utils'
+import { json2moduleContent, generateFolder, generateFile, formatPage } from '@swiftcode/utils'
 import { type OptionsType, type SwaggerStuctType } from '../index'
 
 async function renderDefinitionFile(
@@ -41,7 +41,7 @@ async function renderDefinitionFile(
     isDev
   )
 
-return {
+  return {
     definitionsContent,
     beforeTransformTs
   }

@@ -1,5 +1,5 @@
 import path from 'path'
-import { formatDocName, readFile, generateFile, removeFile } from '@quickcode/utils'
+import { formatDocName, readFile, generateFile, removeFile } from '@swiftcode/utils'
 import { renderLists } from './transformers/renderLists'
 
 export type RenderOptionsType = {

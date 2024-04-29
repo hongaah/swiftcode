@@ -1,10 +1,10 @@
 {
-  "name": "quickcode",
+  "name": "swiftcode",
   "version": "1.0.18",
   "description": "Automate the generation of the swagger api and vue template",
   "type": "module",
   "bin": {
-    "quickcode": "bin/index.js"
+    "swiftcode": "bin/index.js"
   },
   "main": "index.js",
   "files": [
@@ -20,9 +20,9 @@
   "scripts": {
     "clear:dist": "rimraf dist",
     "esbuild:Swagger2Interface": "npx esbuild ./packages/Swagger2Interface/index.js --bundle --minify --outfile=dist/index.js --platform=node",
-    "rollup:utils": "pnpm --filter=@quickcode/utils rollup:build",
-    "rollup:api": "pnpm --filter=@quickcode/api rollup:build",
-    "rollup:list": "pnpm --filter=@quickcode/list rollup:build",
+    "rollup:utils": "pnpm --filter=@swiftcode/utils rollup:build",
+    "rollup:api": "pnpm --filter=@swiftcode/api rollup:build",
+    "rollup:list": "pnpm --filter=@swiftcode/list rollup:build",
     "rollup": "pnpm rollup:utils & pnpm rollup:api & pnpm rollup:list",
     "build": "pnpm clear:dist & rollup -c",
     "release": "pnpm publish"
@@ -47,9 +47,9 @@
     "vueIndentScriptAndStyle": true
   },
   "dependencies": {
-    "@quickcode/api": "workspace:*",
-    "@quickcode/list": "workspace:*",
-    "@quickcode/utils": "workspace:*",
+    "@swiftcode/api": "workspace:*",
+    "@swiftcode/list": "workspace:*",
+    "@swiftcode/utils": "workspace:*",
     "chalk": "4.1.2",
     "commander": "11.1.0",
     "inquirer": "7.1.0",

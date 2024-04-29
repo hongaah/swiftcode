@@ -1,6 +1,6 @@
 import path from 'path'
 import url from 'url'
-import { generateFile, readFile } from '@quickcode/utils'
+import { generateFile, readFile } from '@swiftcode/utils'
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
 

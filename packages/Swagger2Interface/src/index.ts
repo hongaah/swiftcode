@@ -1,5 +1,5 @@
 import { getInput, renderDefinitionFile, renderInterfaceFile } from './transformers/index'
-import { removeDir } from '@quickcode/utils'
+import { removeDir } from '@swiftcode/utils'
 
 export type OptionsType = {
   type?: 'json' | 'url'
@@ -28,7 +28,6 @@ export type SwaggerDefinitionsStuctType = Record<
     required?: string[]
     definition?: Record<string, any>
   }
-
 >
 
 export type DefinitionsValueType = SwaggerDefinitionsStuctType[keyof SwaggerDefinitionsStuctType]
@@ -54,12 +53,12 @@ async function Swagger2InterfaceOutput(options: OptionsType) {
   removeDir(dir)
   const api = await getInput({
     type,
-    source,
+    source
   })
   const { definitionsContent: definitions, beforeTransformTs } = await renderDefinitionFile({
     target: api,
     dir,
-    isDev,
+    isDev
   })
   // @ts-ignore
   await renderInterfaceFile({ target: api, definitions, beforeTransformTs, dir, isDev })

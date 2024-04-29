@@ -1,4 +1,4 @@
-import { isJson } from '@quickcode/utils'
+import { isJson } from '@swiftcode/utils'
 import { httpResultType } from '../constant/type'
 
 /**
@@ -35,21 +35,21 @@ function getTypeName(target: string, type?: string, isAll?: boolean) {
   return type === 'interfaceName' ? `T.'${target}'` : target
 
   if (target.startsWith('HttpResult«BasePageResponse«')) {
-      const result = target.split('HttpResult«BasePageResponse«').join('').split(splitStr)[0]
-      return type === 'interfaceName' ? `PageList<T.${result}>` : result
-    }
+    const result = target.split('HttpResult«BasePageResponse«').join('').split(splitStr)[0]
+    return type === 'interfaceName' ? `PageList<T.${result}>` : result
+  }
 
   if (!['»»', '»»»', '»»»»', '»»»»»'].find((item) => target.includes(item)) && target.startsWith('HttpResult«')) {
-      const HttpResultName = target.split('HttpResult«').join('').split('»')[0]
-      const HttpResultNameReserved = Object.keys(httpResultType).find((item) => item === HttpResultName.toLowerCase())
-      if (type === 'interfaceName') {
-        return HttpResultNameReserved
-          ? httpResultType[HttpResultNameReserved as keyof typeof httpResultType]
-          : `T.${HttpResultName}`
-      } else {
-        return HttpResultNameReserved ? '' : HttpResultName
-      }
+    const HttpResultName = target.split('HttpResult«').join('').split('»')[0]
+    const HttpResultNameReserved = Object.keys(httpResultType).find((item) => item === HttpResultName.toLowerCase())
+    if (type === 'interfaceName') {
+      return HttpResultNameReserved
+        ? httpResultType[HttpResultNameReserved as keyof typeof httpResultType]
+        : `T.${HttpResultName}`
+    } else {
+      return HttpResultNameReserved ? '' : HttpResultName
     }
+  }
 
   return type === 'interfaceName' ? (target.includes('»') ? `T.'${target}'` : `T.${target}`) : target
 

@@ -1,6 +1,6 @@
 import { getRefType, getRefname } from './index'
 import { typeMap } from '../constant/type'
-import { map2obj } from '@quickcode/utils'
+import { map2obj } from '@swiftcode/utils'
 import { type SwaggerStuctType, type DefinitionsValueType } from '../index'
 
 let definitions = {}
@@ -24,7 +24,7 @@ function transformTagAndPath(target: SwaggerStuctType) {
   for (const item of atags) {
     result.set(item?.name ?? Math.random().toFixed(1), {
       ...item,
-      path: {},
+      path: {}
     })
   }
 
@@ -39,7 +39,7 @@ function transformTagAndPath(target: SwaggerStuctType) {
         if (currentTagContent) {
           const pathObj = currentTagContent.path
           Object.assign(pathObj, {
-            [path]: pathContent,
+            [path]: pathContent
           })
           result.set(tag, Object.assign(currentTagContent, { path: pathObj }))
         }
@@ -71,7 +71,7 @@ function fileFlatPath(target: Record<string, any>) {
           method: method,
           summary: pathContent.summary,
           responsesType: getPathResType(pathContent),
-          requestType: getPathReqType(pathContent),
+          requestType: getPathReqType(pathContent)
         })
       }
     }
@@ -116,7 +116,7 @@ function getPathReqType(target: Record<string, any>) {
         type = param.format
       }
       Object.assign(result, {
-        [param.name]: typeMap[type as keyof typeof typeMap],
+        [param.name]: typeMap[type as keyof typeof typeMap]
       })
     }
   }
@@ -127,10 +127,10 @@ function getPathReqType(target: Record<string, any>) {
 
       if (refname) {
         Object.assign(result, {
-          [param.name]: getRefType(refname, definitions),
+          [param.name]: getRefType(refname, definitions)
         })
         Object.assign(result, {
-          refname: getRefname(refname),
+          refname: getRefname(refname)
         })
       } else if (param.schema && param.schema.type === 'array') {
         // 请求参数类型 3
@@ -138,7 +138,7 @@ function getPathReqType(target: Record<string, any>) {
         let itemType = paramSchema.items && paramSchema.items.type
         if (!paramSchema.items) {
           Object.assign(result, {
-            [param.name]: [],
+            [param.name]: []
           })
         }
         // 请求参数类型 4
@@ -147,16 +147,16 @@ function getPathReqType(target: Record<string, any>) {
         }
         if (itemType && Object.keys(typeMap).includes(itemType)) {
           Object.assign(result, {
-            [param.name]: [typeMap[itemType as keyof typeof typeMap]],
+            [param.name]: [typeMap[itemType as keyof typeof typeMap]]
           })
         }
         // 请求参数类型 5
         if (paramSchema?.items?.$ref) {
           Object.assign(result, {
-            [param.name]: getRefType(paramSchema.items.$ref, definitions),
+            [param.name]: getRefType(paramSchema.items.$ref, definitions)
           })
           Object.assign(result, {
-            refname: getRefname(paramSchema.items.$ref),
+            refname: getRefname(paramSchema.items.$ref)
           })
         }
       }
@@ -177,7 +177,7 @@ function getPathReqType(target: Record<string, any>) {
         typeresult = type
       }
       Object.assign(result, {
-        [param.name]: typeresult,
+        [param.name]: typeresult
       })
     }
   }

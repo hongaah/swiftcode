@@ -1,4 +1,4 @@
-import { hump2Line, generateFolder, generateFile, formatPage } from '@quickcode/utils'
+import { hump2Line, generateFolder, generateFile, formatPage } from '@swiftcode/utils'
 import { transformList, getTableData, type FilterObjType, type TableObjType, type TemplateObjType } from './index'
 
 export type RenderRoutesType = {
@@ -65,9 +65,9 @@ async function autoroutes(options: RenderOptionsType) {
     routesContent.push(route)
   }
 
-const routeFileContent = `export const ${routeEnName}Routes = ${JSON.stringify(routesContent, undefined, 2)};export const menuItem = { title: '${routeTitle}', routes: ${routeEnName}Routes };export default ${routeEnName}Routes;`
+  const routeFileContent = `export const ${routeEnName}Routes = ${JSON.stringify(routesContent, undefined, 2)};export const menuItem = { title: '${routeTitle}', routes: ${routeEnName}Routes };export default ${routeEnName}Routes;`
 
-const routeFileName = `${dir}/${routeLineName}.ts`
+  const routeFileName = `${dir}/${routeLineName}.ts`
   generateFile(routeFileName, routeFileContent)
   const formatedRoute = await formatPage(routeFileName)
   generateFile(routeFileName, formatedRoute)
@@ -118,7 +118,7 @@ function renderLists(options: RenderOptionsType) {
     routes
   }
 
-generateFolder(dir)
+  generateFolder(dir)
   total2lists(renderOptions)
   autoroutes(renderOptions)
 }
