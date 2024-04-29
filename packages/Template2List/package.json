@@ -1,11 +1,12 @@
 {
   "name": "@swiftcode/list",
-  "version": "1.0.5",
+  "version": "1.0.0",
   "description": "Automate the generation vue template",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
   "types": "./dist/types/index.d.ts",
   "type": "module",
+  "publishConfig": { "registry": "https://registry.npmjs.org" },
   "exports": {
     "import": "./dist/index.esm.js",
     "require": "./dist/index.cjs.js"

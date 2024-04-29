@@ -40,5 +40,5 @@ function json2moduleContent(target: any, varName = 'data') {
   
   return result
 }
-  
+
 export { formatDocName, hump2Line, isJson, map2obj, json2moduleContent }

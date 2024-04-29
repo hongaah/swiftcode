@@ -29,12 +29,12 @@ export function nodeRequest(options: RequestOptions) {
   }
 
   return new Promise((resolve, reject) => {
-    const req = httpServer(params, (res) => {
+    const req = httpServer(params, (res: Record<string, any>) => {
       res.setEncoding('utf8')
 
       let data = ''
 
-      res.on('data', (chunk) => (data += chunk))
+      res.on('data', (chunk: string) => (data += chunk))
       res.on('end', () => {
         if (res.statusCode === 200) {
           resolve(isJson(data) ? JSON.parse(data) : data)
@@ -54,7 +54,7 @@ export function nodeRequest(options: RequestOptions) {
       req.write(querystringParams)
     }
 
-    req.on('error', (err) => {
+    req.on('error', (err: Error) => {
       reject(err)
     })
     req.end()

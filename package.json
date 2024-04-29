@@ -1,6 +1,6 @@
 {
   "name": "swiftcode",
-  "version": "1.0.18",
+  "version": "1.0.1",
   "description": "Automate the generation of the swagger api and vue template",
   "type": "module",
   "bin": {
@@ -16,6 +16,9 @@
   ],
   "engines": {
     "node": ">=18.12.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   },
   "scripts": {
     "clear:dist": "rimraf dist",

@@ -26,4 +26,4 @@ export const httpResultType = {
   string: 'string',
   boolean: 'boolean',
   undefined: 'undefined',
-}
+} 

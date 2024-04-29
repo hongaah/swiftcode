@@ -107,13 +107,13 @@ const pageContents = {
     },
     // 筛选器选项
     filter: {
-      客编: input,
-      加急单: select,
-      交期: daterange,
-      完成时间: datetime,
-      下通知单日期: date,
-      拼板时间: datetimerange,
-      下单日期: {
+      输入框: input,
+      选择框: select,
+      日期范围选择框: daterange,
+      日期时间选择框: datetime,
+      日期字段: date,
+      日期时间范围选择框: datetimerange,
+      日期月范围选择框: {
         type: 'daterange',
         range: [1, 'm'], // 第二个参数可以是d m y
       },
@@ -122,27 +122,27 @@ const pageContents = {
     table: {
       选择: select,
       序号: index,
-      客编: text,
+      输入框: text,
       // 时间格式 YYYY-MM-DD HH:mm:ss
-      审核时间: time,
+      时间字段: time,
       // 日期格式 YYYY-MM-DD
-      下通知单日期: date,
+      日期字段: date,
       // 时间格式自定义 需单独配置 config-provider
-      完成时间: {
+      日期时间字段: {
         type: datetime,
         formatDate: 'MM-DD HH:mm',
       },
       // 枚举 需单独配置 config-provider
-      分配地区: option,
+      选择字段: option,
       // 链接 需单独配置 config-provider
-      生产编号: link,
+      链接字段: link,
       // 标签 需单独配置 config-provider
-      类型: tag,
+      标签字段: tag,
       操作: {
         type: operate,
         fixed: 'right',
         // 渲染按钮组
-        render: ['审核', '同步'],
+        render: ['修改', '删除'],
       },
     },
   }
