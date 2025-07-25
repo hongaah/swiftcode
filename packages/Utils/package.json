@@ -1,6 +1,6 @@
 {
   "name": "@swiftcode/utils",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "swiftcode utils",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
@@ -15,7 +15,7 @@
     "clear:dist": "rimraf dist",
     "rollup:build": "pnpm clear:dist & rollup -c",
     "rollup:dev": "pnpm clear:dist & rollup -c -w",
-    "release": "pnpm publish"
+    "release": "pnpm publish --workspace-packages"
   },
   "keywords": [
     "automatic"

@@ -1,6 +1,6 @@
 {
   "name": "swiftcode",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Automate the generation of the swagger api and vue template",
   "type": "module",
   "bin": {
@@ -28,7 +28,11 @@
     "rollup:list": "pnpm --filter=@swiftcode/list rollup:build",
     "rollup": "pnpm rollup:utils & pnpm rollup:api & pnpm rollup:list",
     "build": "pnpm clear:dist & rollup -c",
-    "release": "pnpm publish"
+    "packup": "pnpm -r exec pnpm pack --workspace-packages",
+    "release:utils": "pnpm --filter=@swiftcode/utils release",
+    "release:api": "pnpm --filter=@swiftcode/api release",
+    "release:list": "pnpm --filter=@swiftcode/list release",
+    "release": "pnpm release:utils & pnpm release:api & pnpm release:list & pnpm publish --workspace-packages"
   },
   "keywords": [
     "swagger",

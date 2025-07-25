@@ -1,6 +1,6 @@
 {
   "name": "@swiftcode/api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Automate the generation of the swagger api",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
@@ -29,7 +29,7 @@
     "build": "vite build",
     "rollup:build": "pnpm clear:dist & rollup -c --filterLogs 'code:CIRCULAR_DEPENDENCY'",
     "rollup:dev": "pnpm clear:dist & rollup -c -w --filterLogs 'code:CIRCULAR_DEPENDENCY'",
-    "release": "pnpm publish"
+    "release": "pnpm publish --workspace-packages"
   },
   "keywords": [
     "swagger",
