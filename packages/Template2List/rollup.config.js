@@ -3,6 +3,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
+import cpy from 'rollup-plugin-cpy'
 
 export default [
   {
@@ -32,7 +33,11 @@ export default [
       terser(),
       typescript({
         tsconfig: 'tsconfig.json'
-      })
+      }),
+      cpy({
+        files: ['template.js'],
+        dest: 'dist',
+      }),
     ]
   },
   {

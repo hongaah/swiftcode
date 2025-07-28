@@ -1,10 +1,10 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist", //输出文件
+    "outDir": "dist", //输出文件
     "lib": ["esnext", "dom"],
-    "baseUrl": "./",
-    "rootDir": "./"
+    "baseUrl": "",
+    "rootDir": ""
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"]

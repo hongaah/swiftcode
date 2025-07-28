@@ -1,9 +1,13 @@
 import path from 'path'
+import url from 'url'
 import { formatDocName, readFile, generateFile, removeFile } from '@swiftcode/utils'
 import { renderLists } from './transformers/renderLists'
 
 export type RenderOptionsType = {
-  source: string
+  source: string,
+
+  // 输出路径，优先于模板定义的 dir
+  dir?: string
 }
 
 async function loadModule(path: string) {
@@ -13,7 +17,7 @@ async function loadModule(path: string) {
 }
 
 async function Template2ListOutput(options: RenderOptionsType) {
-  const { source } = options
+  const { source, dir } = options
   const sourceContent = readFile(`${formatDocName(source)}`)
 
   const localPathAbsoluteDir = process.cwd()
@@ -25,15 +29,28 @@ async function Template2ListOutput(options: RenderOptionsType) {
 
   await generateFile(tempFile, sourceContent)
   const { default: listConfig } = await loadModule(localfilesImportPattern)
+
+  if (dir) {
+    listConfig.dir = dir
+  }
   await renderLists(listConfig)
   removeFile(tempFile)
 }
 
-function renderTemplate() {
-  const sourceContent = readFile('./template.js')
+function createTemplate(
+  fileName: string,
+  tips?: string,
+  dir?: string
+): void {
+  const __dirname: string = path.dirname(url.fileURLToPath(import.meta.url))
+  const generatedFile = path.join(__dirname, fileName)
+  const sourceContent = readFile(generatedFile) as string
+  const genDir = dir ?? path.resolve()
+  generateFile(path.join(genDir, fileName), sourceContent)
 
-  generateFile('template.js', sourceContent)
-  console.log('下载转换列表的模板 template.js 成功')
+  if (tips) {
+    console.log(tips)
+  }
 }
 
 process.on('uncaughtException', function (err) {
@@ -44,4 +61,4 @@ process.on('uncaughtException', function (err) {
 //   source: './template.js',
 // })
 
-export { Template2ListOutput, renderLists, renderTemplate }
+export { Template2ListOutput, renderLists, createTemplate }

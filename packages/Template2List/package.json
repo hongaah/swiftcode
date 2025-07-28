@@ -1,6 +1,6 @@
 {
   "name": "@swiftcode/list",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Automate the generation vue template",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",

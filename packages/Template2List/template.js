@@ -23,7 +23,7 @@ const pageContents = {
       top: true,
       bottom: true,
       select: true,
-      btn: ['新增', '删除']
+      btn: ['新增', '删除'],
     },
     filter: {
       输入框: input,
@@ -34,8 +34,8 @@ const pageContents = {
       日期时间范围选择框: datetimerange,
       日期月范围选择框: {
         type: 'daterange',
-        range: [1, 'm'] // 第二个参数可以是 d m y
-      }
+        range: [1, 'm'], // 第二个参数可以是d m y
+      },
     },
     table: {
       选择: select,
@@ -46,21 +46,21 @@ const pageContents = {
       日期字段: date,
       日期时间字段: {
         type: datetime,
-        formatDate: 'MM-DD HH:mm'
+        formatDate: 'MM-DD HH:mm',
       },
       选择字段: option,
       标签字段: tag,
       操作: {
         type: operate,
         fixed: 'right',
-        render: ['修改', '删除']
-      }
-    }
+        render: ['修改', '删除'],
+      },
+    },
   },
   简单列表: {
     template: {
       cn: '简单列表',
-      en: 'simpleList'
+      en: 'simpleList',
     },
     filter: {},
     table: {
@@ -68,9 +68,9 @@ const pageContents = {
       输入框: text,
       链接字段: link,
       时间字段: time,
-      日期选择框: date
-    }
-  }
+      日期字段: date,
+    },
+  },
 }
 
 const defineListConfig = {
@@ -80,11 +80,11 @@ const defineListConfig = {
     isRender: true,
     menu: {
       en: 'templateManagement',
-      cn: '模板列表'
-    }
+      cn: '模板列表',
+    },
   },
   mock: true,
-  readMe: false
+  readMe: false,
 }
 
 export default defineListConfig
