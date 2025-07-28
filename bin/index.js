@@ -1,13 +1,26 @@
 #! /usr/bin/env node
+import path from 'path'
+import url from 'url'
 import inquirer from 'inquirer'
-import { Command } from 'commander/esm.mjs'
 import ora from 'ora'
 import chalk from 'chalk'
+import { Command } from 'commander/esm.mjs'
 import { Swagger2InterfaceOutput } from '@swiftcode/api'
 import { Template2ListOutput } from '@swiftcode/list'
-import { createTemplate, getPackageVersion } from '../index.mjs'
+import { readFile } from '@swiftcode/utils'
+// import { Swagger2InterfaceOutput } from '../packages/Swagger2Interface/dist/index.esm.js'
+// import { Template2ListOutput, createTemplate } from '../packages/Template2List/dist/index.esm.js'
+// import { readFile } from '../packages/Utils/dist/index.esm.js'
 
 const program = new Command()
+
+function getPackageVersion() {
+  const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
+  const packageJson = path.join(__dirname, '../package.json')
+  const version = JSON.parse(readFile(packageJson)).version
+
+  return version
+}
 
 async function handleTransformApi(options) {
   if (!options.source) return
