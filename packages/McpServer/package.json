@@ -1,0 +1,49 @@
+{
+  "name": "@swiftcode/mcp",
+  "version": "1.1.0",
+  "description": "MCP server for Swiftcode - Automatic code generation tool for Swagger API and Vue components",
+  "type": "module",
+  "bin": {
+    "@swiftcode/mcp-server": "./bin/index.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "scripts": {
+    "watch": "rimraf dist && tsc --watch",
+    "build": "rimraf dist && tsc && shx chmod +x dist/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "inspector": "pnpm build && npx @modelcontextprotocol/inspector npx node dist/index.js",
+    "release": "pnpm build && npm publish"
+  },
+  "keywords": [
+    "MCP server",
+    "code generation",
+    "swagger",
+    "vue",
+    "api client",
+    "typescript",
+    "frontend tools"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "@swiftcode/api": "^1.0.2",
+    "@swiftcode/list": "^1.0.3"
+  },
+  "devDependencies": {
+    "shx": "^0.3.4",
+    "@types/js-yaml": "^4.0.5",
+    "@types/node": "18.x",
+    "@types/swagger-parser": "latest",
+    "express": "^4.21.2",
+    "rimraf": "^6.0.1"
+  },
+  "repository": "https://github.com/hongaah/swiftcode-mcp-server",
+  "author": "Hazel Wei",
+  "license": "MIT"
+}
