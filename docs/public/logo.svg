@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60" width="400" height="400">
+  <g transform="translate(0, 5)">
+    <!-- Main flying wing shape -->
+    <path d="M 60,10 L 110,50 L 60,40 L 10,50 Z" fill="#ff69b4" />
+    
+    <!-- Center cockpit/body section, darker for depth -->
+    <path d="M 60,10 L 70,45 L 60,40 L 50,45 Z" fill="#e65da2" />
+    
+    <!-- Shading on the wings to give a folded appearance -->
+    <path d="M 60,40 L 10,50 L 35,48 Z" fill="#ff85c1" opacity="0.7" />
+    <path d="M 60,40 L 110,50 L 85,48 Z" fill="#ff85c1" opacity="0.7" />
+  </g>
+</svg>

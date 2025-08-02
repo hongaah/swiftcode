@@ -1,0 +1,71 @@
+/* 
+  VitePress Custom Theme: Black & Pink
+*/
+
+/* 
+  :root variables are for light mode.
+  This is the default mode.
+*/
+:root {
+  --vp-c-brand-1: #ff69b4; /* A bright pink for main brand color */
+  --vp-c-brand-2: #ff85c1; /* A slightly lighter pink */
+  --vp-c-brand-3: #ff9fce; /* An even lighter pink */
+  --vp-c-brand-soft: rgba(255, 105, 180, 0.14); /* Soft pink for backgrounds */
+
+  /* Text colors */
+  --vp-c-text-1: #2c3e50; /* Dark slate gray for primary text */
+
+  /* Background colors */
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-soft: #f8f8f8;
+  --vp-c-bg-mute: #f2f2f2;
+
+  /* Border colors */
+  --vp-c-border: #eaecef;
+  --vp-c-divider: #eaecef;
+}
+
+/*
+  .dark class variables are for dark mode.
+*/
+.dark {
+  --vp-c-brand-1: #ff85c1; /* A lighter pink for dark mode */
+  --vp-c-brand-2: #ff69b4; /* A slightly darker pink */
+  --vp-c-brand-3: #e65da2; /* An even darker pink */
+  --vp-c-brand-soft: rgba(255, 133, 193, 0.16); /* Soft pink for dark backgrounds */
+
+  /* Text colors */
+  --vp-c-text-1: rgba(255, 255, 255, 0.87); /* Light text for dark mode */
+  --vp-c-text-2: rgba(235, 235, 245, 0.6);
+
+  /* Background colors */
+  --vp-c-bg: #1e1e1e; /* A very dark gray, almost black */
+  --vp-c-bg-soft: #282828;
+  --vp-c-bg-mute: #333333;
+  --vp-c-bg-alt: #202020;
+
+  /* Border colors */
+  --vp-c-border: #383838;
+  --vp-c-divider: #2d2d2d;
+}
+
+/* Add a subtle transition for color changes */
+:root, .dark {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar for a more modern look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--vp-c-bg-soft);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--vp-c-brand-3);
+  border-radius: 4px;
+  border: 2px solid var(--vp-c-bg-soft);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--vp-c-brand-2);
+}
